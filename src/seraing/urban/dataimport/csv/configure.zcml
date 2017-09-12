@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="seraing.urban.dataimport">
+
+
+    <adapter
+        for="imio.urban.dataimport.interfaces.IImportSettingsForm"
+        factory=".settings.SeraingCsvImporterFromImportSettings"
+        provides="imio.urban.dataimport.csv.interfaces.ICSVImporter"
+        name="seraing csv parcellings"
+    />
+
+    <adapter
+        for="imio.urban.dataimport.csv.interfaces.ICSVImporter"
+        factory=".importer.SeraingCSVMapping"
+        provides="imio.urban.dataimport.interfaces.IObjectsMapping"
+        name="objects mapping"
+    />
+
+    <adapter
+        for="imio.urban.dataimport.csv.interfaces.ICSVImporter"
+        factory=".importer.SeraingCSVValuesMapping"
+        provides="imio.urban.dataimport.interfaces.IValuesMapping"
+        name="values mapping"
+    />
+
+
+</configure>
